@@ -385,14 +385,19 @@ void App::resetPenaltyRound() {
 void App::startPenaltyPractice() {
 
     std::shared_ptr<Stadium> st;
+    const std::string hbsAscii = "assets/ldc_real_soccer.hbs";
     const std::string hbsFile = "LDC-Real-Soccer-\xCA\x9C\xE1\xB4\x80x\xE1\xB4\x8D\xE1\xB4\x8F\xE1\xB4\x85s.\xE1\xB4\x84\xE1\xB4\x8F\xE1\xB4\x8D_6a6399b7c92aa.hbs";
     std::vector<std::string> candidates = {
+        hbsAscii,
+        "../" + hbsAscii,
         hbsFile,
         "../" + hbsFile
     };
     if (char* basePath = SDL_GetBasePath()) {
         std::string bp(basePath);
         SDL_free(basePath);
+        candidates.push_back(bp + hbsAscii);
+        candidates.push_back(bp + "../" + hbsAscii);
         candidates.push_back(bp + hbsFile);
         candidates.push_back(bp + "../" + hbsFile);
     }
