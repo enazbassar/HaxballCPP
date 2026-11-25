@@ -17,7 +17,7 @@ A **100% native C++17** Haxball client built with **SDL2 (`SDL_RenderGeometry` b
 ### 2. 4-Tab In-Game Menu (`F1` / `F2` / `F3` / `Insert`)
 - **Network `[F1]`**: Extrapolation slider + presets, Ping Delay, FPS Limit, VSync, NetGraph, Desync Ghost, and Fake Ping controls.
 - **Assist `[F2]`**:
-  - **Goal & GK**: Stealth **Auto-Goal `[0]`** (with Accuracy slider `30–100%`), **Any Goal `[1]`** with **My Goal (Exclude)** color picker for multi-goal/FFA stadiums, **Auto-Save `[6]`**, **Smart GK `[7]`**, **Penalty GK `[8]`**, **GK Danger Cone**, and **Other Cones**.
+  - **Goal & GK**: Stealth **Auto-Goal `[0]`** (with Accuracy slider `30–100%`), **10 Men Futsal (OFF IN RS) `[1]`** with **My Goal (Exclude)** color picker for multi-goal/FFA stadiums, **Auto-Save `[6]`**, **Smart GK `[7]`**, **Penalty GK `[8]`**, **GK Danger Cone**, and **Other Cones**.
   - **Feints & Filters**: **Fake Shot `[F]`** (with cooldown slider), **Extend Fake `[5]`** (`Auto Safe` / `+1..+15 Ticks`), **Anti-OPMode `[2]`**, **Anti-FakeShot `[3]`**, and **1st-Touch Soft `[4]`**.
   - **Hold-to-Use Tech** *(always ready when held)*: **Fast-Fake `[P]`** (`1..10 Ticks`), **Auto-Click `[N]`** (`0..1000 ms`), **Auto-Shaker `[B]`** (`1..12 Ticks`), **Moon Orbit `[O]`** (`Surface` / `+1..+15 Gap`), and **Slow Speed `[M]`** (`10–90%`).
   - **Lines & Extras**: **Live Aim Line** (distance & opacity sliders), **Ball Roll Line** (lookahead slider), **Real Soccer Helper** (`Slide [C]` / `Sprint [V]`), **Fake Typing `[J]`**, and **Type Strobe `[U]`** (`5–500 ms`).
@@ -44,7 +44,7 @@ A **100% native C++17** Haxball client built with **SDL2 (`SDL_RenderGeometry` b
 | **F1 / F2 / F3 / Insert** | Toggle Network / Assist / Camera / Client Menu |
 | **Tab / Esc** | Toggle Room Lobby (or exit `x88` edit mode / close menu) |
 | **Enter / T** | Open Chat Input / Send Message |
-| **0 / 1** | Toggle Auto-Goal / Any Goal |
+| **0 / 1** | Toggle Auto-Goal / 10 Men Futsal (OFF IN RS) |
 | **2 / 3 / 4 / 5** | Toggle Anti-OPMode / Anti-FakeShot / 1st-Touch Soft / Extend Fake |
 | **6 / 7 / 8** | Toggle Auto-Save / Smart GK / Penalty GK |
 | **F** | Toggle Fake Shot |

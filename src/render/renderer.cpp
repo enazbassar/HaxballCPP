@@ -1836,7 +1836,7 @@ void GameRenderer::drawUnifiedDashboardModal(SDL_Renderer* renderer, const World
         drawAssistToggleCol(0, 0, "Live Aim Trajectory", assistant.showLiveAimTrajectory);
         drawAssistToggleCol(0, 1, "Ball Roll Trajectory", assistant.showBallRollTrajectory);
         drawAssistToggleCol(0, 2, "Auto-Goal [0]", assistant.autoGoalEnabled);
-        drawAssistToggleCol(0, 3, "Auto-Goal: Any Goal", assistant.autoGoalAnyGoal);
+        drawAssistToggleCol(0, 3, "10 Men Futsal (OFF IN RS)", assistant.autoGoalAnyGoal);
         drawAssistToggleCol(0, 4, "Auto-Save [6]", assistant.autoSaveEnabled);
         drawAssistToggleCol(0, 5, "First-Touch Cushion", assistant.firstTouchCushionEnabled);
         drawAssistToggleCol(0, 6, "Auto-Shaker [B]", assistant.autoShakeEnabled);

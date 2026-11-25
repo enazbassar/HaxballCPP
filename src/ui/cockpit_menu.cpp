@@ -731,14 +731,14 @@ void CockpitMenu::drawX88Overlay(
         if (a.autoGoalAnyGoal || !x88ActiveOnly || sel) {
             if (a.autoGoalExcludeColor >= 0 && (a.autoGoalAnyGoal || sel)) {
                 rows.push_back({
-                    X88Item::AnyGoal, "Any Goal", "1",
+                    X88Item::AnyGoal, "10 Men Futsal (OFF IN RS)", "1",
                     a.autoGoalAnyGoal ? "ON (Excl)" : "OFF (Excl)",
                     a.autoGoalAnyGoal ? colOn : colOff,
                     a.autoGoalAnyGoal,
                     a.autoGoalExcludeColor & 0xFFFFFF
                 });
             } else {
-                addBool(X88Item::AnyGoal, "Any Goal", "1", a.autoGoalAnyGoal, "(All)", false);
+                addBool(X88Item::AnyGoal, "10 Men Futsal (OFF IN RS)", "1", a.autoGoalAnyGoal, "(All)", false);
             }
         }
     }
@@ -828,8 +828,8 @@ void CockpitMenu::drawX88Overlay(
     const float sc = std::clamp(x88Scale, 0.70f, 1.60f);
     const float fontSize = 13.0f * sc;
     const float lineH = 16.0f * sc;
-    const float labelColW = 148.0f * sc;
-    const float totalW = 264.0f * sc;
+    const float labelColW = 205.0f * sc;
+    const float totalW = 320.0f * sc;
     const float extraFooterH = (x88SelectedItem != X88Item::None) ? (lineH + 4.0f * sc) : 0.0f;
     const float totalH = (static_cast<float>(rows.size()) + 1.4f) * lineH + extraFooterH;
 
@@ -1213,7 +1213,7 @@ void CockpitMenu::renderAssistTab(GameRenderer& gr, const World* world, OverlayA
     ImGui::SetCursorScreenPos(ImVec2(c0x, r0y + rowStep * 0));
     if (uiFlatToggle("##tg_ag",  "Auto-Goal",       "0", a.autoGoalEnabled,    colW)) action = OverlayAction::AssistanceChanged;
     ImGui::SetCursorScreenPos(ImVec2(c0x, r0y + rowStep * 1));
-    if (uiFlatToggle("##tg_any", "Any Goal",        "1", a.autoGoalAnyGoal,    colW)) action = OverlayAction::AssistanceChanged;
+    if (uiFlatToggle("##tg_any", "10 Men Futsal (OFF IN RS)", "1", a.autoGoalAnyGoal, colW)) action = OverlayAction::AssistanceChanged;
     ImGui::SetCursorScreenPos(ImVec2(c0x, r0y + rowStep * 2));
     if (uiFlatToggle("##tg_as",  "Auto-Save",       "6", a.autoSaveEnabled,    colW)) action = OverlayAction::AssistanceChanged;
     ImGui::SetCursorScreenPos(ImVec2(c0x, r0y + rowStep * 3));
