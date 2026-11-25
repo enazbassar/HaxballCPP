@@ -128,7 +128,7 @@ elseif(WIN32)
         FetchContent_Declare(
             libdatachannel
             GIT_REPOSITORY https://github.com/paullouisageneau/libdatachannel.git
-            GIT_TAG v0.22.4
+            GIT_TAG v0.24.6
             GIT_SHALLOW TRUE
         )
         FetchContent_MakeAvailable(libdatachannel)
