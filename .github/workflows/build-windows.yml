@@ -43,6 +43,7 @@ jobs:
           mkdir -p dist
           cp build/haxball_client.exe dist/
           cp -r assets dist/
+          cp *.hbs dist/ 2>/dev/null || true
           ldd build/haxball_client.exe | grep -i '/mingw64/bin/' | awk '{print $3}' | while read -r dll; do
             [ -n "$dll" ] && cp -v "$dll" dist/
           done
