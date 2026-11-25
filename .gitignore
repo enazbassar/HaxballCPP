@@ -1,0 +1,34 @@
+# Build directories and intermediates
+build/
+build-win/
+build-mac/
+build_stress/
+build-stress-mac/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+*.o
+*.obj
+*.log
+*.hbr2
+haxball_client
+haxball_client.exe
+
+# Toolchain downloads & large cross-compiler caches (370+ MB)
+win_deps/
+mac_deps/
+scratch/
+
+# Local personal runtime config (contains personal private keys & settings)
+haxball_config.json
+
+# Unpacked Windows staging folder
+Haxball_Client_Windows/
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
