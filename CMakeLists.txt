@@ -111,6 +111,7 @@ elseif(WIN32)
     find_package(LibDataChannel QUIET)
 
     if(NOT LibDataChannel_FOUND)
+        set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
         set(NO_MEDIA ON CACHE BOOL "" FORCE)
         set(NO_EXAMPLES ON CACHE BOOL "" FORCE)
         set(NO_TESTS ON CACHE BOOL "" FORCE)
