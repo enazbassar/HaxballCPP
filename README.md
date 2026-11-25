@@ -77,6 +77,19 @@ cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
 ```
 
+### Windows (MSYS2 MINGW64)
+1. Install [MSYS2](https://www.msys2.org/) and open the **MSYS2 MINGW64** shell.
+2. Install dependencies and build:
+```bash
+pacman -S --needed git mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja \
+  mingw-w64-x86_64-SDL2 mingw-w64-x86_64-openssl mingw-w64-x86_64-zlib mingw-w64-x86_64-libdatachannel
+
+cd HaxballCPP
+cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+./build/haxball_client.exe
+```
+
 ### macOS
 ```bash
 ./build_mac.sh

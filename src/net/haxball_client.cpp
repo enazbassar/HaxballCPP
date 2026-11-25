@@ -1,5 +1,4 @@
 #include <fstream>
-#include <unistd.h>
 #include "haxball_client.hpp"
 #include <iostream>
 #include <cmath>

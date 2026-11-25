@@ -104,6 +104,52 @@ if(APPLE)
         BUILD_RPATH "${CMAKE_CURRENT_SOURCE_DIR}/mac_deps"
         INSTALL_RPATH "${CMAKE_CURRENT_SOURCE_DIR}/mac_deps"
     )
+elseif(WIN32)
+    find_package(SDL2 REQUIRED)
+    find_package(OpenSSL REQUIRED)
+    find_package(ZLIB REQUIRED)
+    find_package(LibDataChannel REQUIRED)
+
+    target_compile_definitions(haxball_client PRIVATE
+        WIN32_LEAN_AND_MEAN
+        NOMINMAX
+        _USE_MATH_DEFINES
+        _WIN32_WINNT=0x0601
+    )
+
+    if(TARGET SDL2::SDL2main)
+        target_link_libraries(haxball_client PRIVATE SDL2::SDL2main)
+    endif()
+    if(TARGET SDL2::SDL2)
+        target_link_libraries(haxball_client PRIVATE SDL2::SDL2)
+    else()
+        target_include_directories(haxball_client PRIVATE ${SDL2_INCLUDE_DIRS})
+        target_link_libraries(haxball_client PRIVATE ${SDL2_LIBRARIES})
+    endif()
+
+    if(TARGET LibDataChannel::LibDataChannel)
+        target_link_libraries(haxball_client PRIVATE LibDataChannel::LibDataChannel)
+    else()
+        target_link_libraries(haxball_client PRIVATE datachannel)
+    endif()
+
+    target_link_libraries(haxball_client PRIVATE
+        OpenSSL::SSL
+        OpenSSL::Crypto
+        ZLIB::ZLIB
+        ws2_32
+        crypt32
+        iphlpapi
+        bcrypt
+        winmm
+        imm32
+        version
+        setupapi
+    )
+
+    if(MINGW)
+        target_link_options(haxball_client PRIVATE -static-libgcc -static-libstdc++)
+    endif()
 else()
     target_link_libraries(haxball_client PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libdatachannel-static.a
