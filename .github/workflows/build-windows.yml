@@ -43,8 +43,10 @@ jobs:
           mkdir -p dist
           cp build/haxball_client.exe dist/
           cp -r assets dist/
-          ldd build/haxball_client.exe | grep '/mingw64/bin/' | awk '{print $3}' | xargs -I '{}' cp -v '{}' dist/
-          powershell -Command "Compress-Archive -Path dist/* -DestinationPath HaxballCPP-Windows.zip -Force"
+          ldd build/haxball_client.exe | grep -i '/mingw64/bin/' | awk '{print $3}' | while read -r dll; do
+            [ -n "$dll" ] && cp -v "$dll" dist/
+          done
+          powershell.exe -NoProfile -Command "Compress-Archive -Path dist/* -DestinationPath HaxballCPP-Windows.zip -Force"
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
@@ -57,6 +59,6 @@ jobs:
         with:
           tag_name: latest
           name: Latest Windows Build
-          body: Automatically compiled Windows release (`haxball_client.exe` + DLLs + `assets/`). Unzip and run `haxball_client.exe`.
+          body: "Automatically compiled Windows release (`haxball_client.exe` + DLLs + `assets/`). Unzip and run `haxball_client.exe`."
           files: HaxballCPP-Windows.zip
           make_latest: true

@@ -128,7 +128,7 @@ elseif(WIN32)
         FetchContent_Declare(
             libdatachannel
             GIT_REPOSITORY https://github.com/paullouisageneau/libdatachannel.git
-            GIT_TAG v0.24.6
+            GIT_TAG master
             GIT_SHALLOW TRUE
         )
         FetchContent_MakeAvailable(libdatachannel)
@@ -142,6 +142,9 @@ elseif(WIN32)
         _WIN32_WINNT=0x0601
     )
 
+    if(MINGW)
+        target_link_libraries(haxball_client PRIVATE mingw32)
+    endif()
     if(TARGET SDL2::SDL2main)
         target_link_libraries(haxball_client PRIVATE SDL2::SDL2main)
     endif()
