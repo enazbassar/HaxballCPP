@@ -132,6 +132,11 @@ elseif(WIN32)
             GIT_SHALLOW TRUE
         )
         FetchContent_MakeAvailable(libdatachannel)
+        foreach(_t usrsctp usrsctp-static)
+            if(TARGET ${_t})
+                target_compile_options(${_t} PRIVATE -UNOMINMAX)
+            endif()
+        endforeach()
         target_include_directories(haxball_client BEFORE PRIVATE ${libdatachannel_SOURCE_DIR}/include)
     endif()
 
