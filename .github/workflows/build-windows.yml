@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-windows:
     runs-on: windows-latest
@@ -41,9 +44,19 @@ jobs:
           cp build/haxball_client.exe dist/
           cp -r assets dist/
           ldd build/haxball_client.exe | grep '/mingw64/bin/' | awk '{print $3}' | xargs -I '{}' cp -v '{}' dist/
+          powershell -Command "Compress-Archive -Path dist/* -DestinationPath HaxballCPP-Windows.zip -Force"
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
         with:
           name: HaxballCPP-Windows
-          path: dist/
+          path: HaxballCPP-Windows.zip
+
+      - name: Publish to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Windows Build
+          body: Automatically compiled Windows release (`haxball_client.exe` + DLLs + `assets/`). Unzip and run `haxball_client.exe`.
+          files: HaxballCPP-Windows.zip
+          make_latest: true
