@@ -1,4 +1,8 @@
 #include "app.hpp"
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <cstring>
 #include <iostream>
 #include <chrono>
 #include <thread>

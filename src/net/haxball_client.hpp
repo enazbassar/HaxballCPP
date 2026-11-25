@@ -9,6 +9,8 @@
 #include <rtc/websocket.hpp>
 #include <nlohmann/json.hpp>
 
+#include <algorithm>
+#include <cstdint>
 #include <memory>
 #include <string>
 #include <vector>

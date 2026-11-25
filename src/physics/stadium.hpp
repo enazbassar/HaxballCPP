@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #include "../math/vec2.hpp"
 #include "../net/buffer.hpp"
 #include "disc.hpp"

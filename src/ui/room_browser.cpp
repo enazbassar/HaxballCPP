@@ -1,6 +1,8 @@
 #include "room_browser.hpp"
 #include "../render/renderer.hpp"
 #include <algorithm>
+#include <cmath>
+#include <cstdint>
 #include <thread>
 #include <cctype>
 #include <iostream>

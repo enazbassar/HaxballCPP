@@ -5,6 +5,7 @@
 #include "../physics/world.hpp"
 #include "../assist/tactical_assistant.hpp"
 #include "font.hpp"
+#include <algorithm>
 #include <string>
 #include <vector>
 #include <deque>

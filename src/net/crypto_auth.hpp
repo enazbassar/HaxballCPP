@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #include "buffer.hpp"
 #include <openssl/evp.h>
 #include <openssl/ec.h>

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <cstring>
+#include <cmath>
 #include <algorithm>
 
 namespace haxball {

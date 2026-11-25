@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #include "stadium.hpp"
 #include "disc.hpp"
 #include "../net/buffer.hpp"
