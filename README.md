@@ -82,7 +82,7 @@ cmake --build build -j$(nproc)
 2. Install dependencies and build:
 ```bash
 pacman -S --needed git mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja \
-  mingw-w64-x86_64-SDL2 mingw-w64-x86_64-openssl mingw-w64-x86_64-zlib mingw-w64-x86_64-libdatachannel
+  mingw-w64-x86_64-SDL2 mingw-w64-x86_64-openssl mingw-w64-x86_64-zlib
 
 cd HaxballCPP
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release

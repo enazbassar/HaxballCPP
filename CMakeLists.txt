@@ -108,7 +108,21 @@ elseif(WIN32)
     find_package(SDL2 REQUIRED)
     find_package(OpenSSL REQUIRED)
     find_package(ZLIB REQUIRED)
-    find_package(LibDataChannel REQUIRED)
+    find_package(LibDataChannel QUIET)
+
+    if(NOT LibDataChannel_FOUND)
+        set(NO_MEDIA ON CACHE BOOL "" FORCE)
+        set(NO_EXAMPLES ON CACHE BOOL "" FORCE)
+        set(NO_TESTS ON CACHE BOOL "" FORCE)
+        set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+        FetchContent_Declare(
+            libdatachannel
+            GIT_REPOSITORY https://github.com/paullouisageneau/libdatachannel.git
+            GIT_TAG v0.22.4
+            GIT_SHALLOW TRUE
+        )
+        FetchContent_MakeAvailable(libdatachannel)
+    endif()
 
     target_compile_definitions(haxball_client PRIVATE
         WIN32_LEAN_AND_MEAN
@@ -127,7 +141,9 @@ elseif(WIN32)
         target_link_libraries(haxball_client PRIVATE ${SDL2_LIBRARIES})
     endif()
 
-    if(TARGET LibDataChannel::LibDataChannel)
+    if(TARGET LibDataChannel::LibDataChannelStatic)
+        target_link_libraries(haxball_client PRIVATE LibDataChannel::LibDataChannelStatic)
+    elseif(TARGET LibDataChannel::LibDataChannel)
         target_link_libraries(haxball_client PRIVATE LibDataChannel::LibDataChannel)
     else()
         target_link_libraries(haxball_client PRIVATE datachannel)
