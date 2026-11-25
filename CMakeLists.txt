@@ -18,16 +18,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(imgui)
 
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/SDL2
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/rtc
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/stb
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${imgui_SOURCE_DIR}
-    ${imgui_SOURCE_DIR}/backends
-)
-
 # On macOS with Homebrew:
 if(APPLE)
     if(EXISTS "/opt/homebrew") # Apple Silicon (M1/M2/M3/M4)
@@ -65,6 +55,25 @@ set(SOURCES
 )
 
 add_executable(haxball_client ${SOURCES})
+
+target_include_directories(haxball_client PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/stb
+    ${imgui_SOURCE_DIR}
+    ${imgui_SOURCE_DIR}/backends
+)
+if(NOT WIN32)
+    target_include_directories(haxball_client PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/SDL2
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/rtc
+    )
+else()
+    target_include_directories(haxball_client PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/nlohmann
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+    )
+endif()
 
 if(APPLE)
     find_package(OpenSSL REQUIRED)
@@ -123,6 +132,7 @@ elseif(WIN32)
             GIT_SHALLOW TRUE
         )
         FetchContent_MakeAvailable(libdatachannel)
+        target_include_directories(haxball_client BEFORE PRIVATE ${libdatachannel_SOURCE_DIR}/include)
     endif()
 
     target_compile_definitions(haxball_client PRIVATE
