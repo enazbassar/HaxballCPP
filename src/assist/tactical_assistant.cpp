@@ -1394,7 +1394,7 @@ uint32_t TacticalAssistant::computeInputMask(const World& renderWorld, const Wor
 
         if (rsMacroSlideTriggered) {
 
-            if (currentAv == "👟" || rsMacroElapsedTicks >= 50) {
+            if (currentAv == "👟" || rsMacroElapsedTicks >= 23) {
                 rsMacroSlideTriggered = false;
                 rsMacroElapsedTicks = 0;
                 rsCurrentState = RSSuperpowerState::None;
@@ -1407,7 +1407,7 @@ uint32_t TacticalAssistant::computeInputMask(const World& renderWorld, const Wor
             }
         } else if (rsMacroSprintTriggered) {
 
-            if (currentAv == "⚡" || currentAv == "💨" || rsMacroElapsedTicks >= 95) {
+            if (currentAv == "⚡" || currentAv == "💨" || rsMacroElapsedTicks >= 62) {
                 rsMacroSprintTriggered = false;
                 rsMacroElapsedTicks = 0;
                 rsCurrentState = RSSuperpowerState::None;
